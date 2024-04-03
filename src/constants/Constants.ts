@@ -1,0 +1,6 @@
+export const REGISTER_API_URL = "http://localhost:3000/api/register"
+export const LOGIN_EMAIL_API_URL = "http://localhost:3000/api/loginWithEmail"
+export const LOGIN_PHONE_API_URL = "http://localhost:3000/api/loginWithPhone"
+export const FORGOT_PASSWORD_URL = "http://localhost:3000/api/forgetPassword"
+export const RESET_PASSWORD_URL = "http://localhost:3000/api/resetPassword"
+export const GET_ALL_USERS_URL = "http://localhost:3000/api/getAllUsers"
