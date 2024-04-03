@@ -17,7 +17,6 @@ export default function Home() {
   const router = useRouter();
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (token !== undefined || null || "") {
       router.push("/home");
     }
