@@ -7,7 +7,13 @@ export async function GET(req: NextRequest) {
         const token = req.headers.get('authorization')
         const { message, flag } = validateAndDecodeToken(token);
         if (flag) {
-            const users = await User.findAll();
+            const users = await User.findAll({
+                attributes:[
+                    'nameOfUser',
+                    'emailOfUser',
+                    'phoneNumber'
+                ]
+            });
             return NextResponse.json({
                 status: 200,
                 users
