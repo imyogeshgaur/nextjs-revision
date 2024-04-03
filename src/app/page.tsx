@@ -5,7 +5,7 @@ import { LoginInterface } from "@/interface/AuthInterface";
 import { TextInputInterface } from "@/interface/TextInputInterface";
 import { isValidEmail } from "@/validations/validate";
 import Link from "next/link";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import {
   LOGIN_EMAIL_API_URL,
@@ -15,6 +15,14 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token)
+    if (token !== undefined || null || "") {
+      router.push("/home");
+    }
+  }, [])
+  
   const [user, setUser] = useState<LoginInterface>({
     emailOrPhone: "",
     password: "",
@@ -97,6 +105,7 @@ export default function Home() {
               errorState: true,
             });
           } else {
+            localStorage.setItem("token",data.message);
             router.push("/home");
           }
         } else {
@@ -115,6 +124,7 @@ export default function Home() {
               errorState: true,
             });
           } else {
+            localStorage.setItem("token",data.message);
             router.push("/home");
           }
         }
