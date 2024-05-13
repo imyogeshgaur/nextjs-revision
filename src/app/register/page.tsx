@@ -174,7 +174,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="ml-96 mr-96 mt-40 pt-4 rounded-lg bg-blue-400 ">
+      <div className="ml-96 mr-96 mt-20 pt-4 rounded-lg bg-blue-400 ">
         <h1 className="text-center text-2xl">Register Here</h1>
         {propsArray.map((val: TextInputInterface, index: any) => (
           <TextInput
@@ -189,9 +189,14 @@ const Register = () => {
           />
         ))}
 
-        <Button onClick={registerUserAPI} btnText={"Register"} />
+        <Button 
+        onClick={registerUserAPI} 
+        btnText={"Register"}
+        backgroundColor={"blue"}
+        textColor={"white"}
+        />
 
-        <p className="ml-56 mt-4 pb-3">
+        <p className="ml-36 mt-4 pb-3">
           Already have account?
           <Link href={"/"}> Login Here</Link>
         </p>

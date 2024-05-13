@@ -5,7 +5,7 @@ import { LoginInterface } from "@/interface/AuthInterface";
 import { TextInputInterface } from "@/interface/TextInputInterface";
 import { isValidEmail } from "@/validations/validate";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {
   LOGIN_EMAIL_API_URL,
@@ -15,6 +15,13 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token !== null) {
+      router.push("/home");
+    }
+  }, []);
+
   const [user, setUser] = useState<LoginInterface>({
     emailOrPhone: "",
     password: "",
@@ -97,6 +104,7 @@ export default function Home() {
               errorState: true,
             });
           } else {
+            localStorage.setItem("token", data.message);
             router.push("/home");
           }
         } else {
@@ -115,6 +123,7 @@ export default function Home() {
               errorState: true,
             });
           } else {
+            localStorage.setItem("token", data.message);
             router.push("/home");
           }
         }
@@ -125,7 +134,7 @@ export default function Home() {
   };
 
   return (
-    <div className="ml-96 mr-96 mt-56 bg-blue-400 pb-5 px-2 pt-2 rounded-lg">
+    <div className="ml-96 mr-96 mt-40 bg-blue-400 pb-5 px-2 pt-2 rounded-lg">
       <h1 className="text-center text-2xl">Login Here</h1>
 
       {propsArray.map((val: TextInputInterface, index: any) => (
@@ -141,9 +150,13 @@ export default function Home() {
         />
       ))}
 
-      <Button onClick={loginUserAPI} btnText={"Login"} />
-
-      <p className="ml-64 mt-4">
+      <Button
+        onClick={loginUserAPI}
+        btnText={"Login"}
+        backgroundColor={"blue"}
+        textColor={"white"}
+      />
+      <p className="ml-44 mt-4">
         New Here?
         <Link href={"/register"}> Register Here</Link>
       </p>
