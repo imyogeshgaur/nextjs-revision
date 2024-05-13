@@ -9,12 +9,10 @@ import { useEffect, useState } from "react";
 const Home = () => {
   const routes = useRouter();
   const [users, setUsers] = useState([]);
+  const token = localStorage.getItem("token");
 
+  if(token===null) routes.push("/")
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token == undefined || null || "") {
-      routes.push("/");
-    }
     axios
       .get(GET_ALL_USERS_URL, {
         headers: {
@@ -30,16 +28,16 @@ const Home = () => {
     <>
       <NavBar />
       <div className="flex flex-wrap">
-      {users.map((val: any, index: number) => {
-        return (
-          <Card
-            key={index}
-            name={val.nameOfUser}
-            email={val.emailOfUser}
-            phone={val.phoneNumber}
-          />
-        );
-      })}
+        {users.map((val: any, index: number) => {
+          return (
+            <Card
+              key={index}
+              name={val.nameOfUser}
+              email={val.emailOfUser}
+              phone={val.phoneNumber}
+            />
+          );
+        })}
       </div>
     </>
   );

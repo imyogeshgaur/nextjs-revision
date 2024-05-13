@@ -1,13 +1,25 @@
-import React from 'react'
+import React from "react";
 
-const Button = (props:any) => {
+const Button = (props: any) => {
   return (
     <>
-      <button 
-      onClick={props.onClick}
-      className='text-white bg-blue-700 p-1 w-40 ml-64 mt-4 rounded-lg' >{props.btnText}</button>
+      {props.backgroundColor == "red" ? (
+        <button
+          onClick={props.onClick}
+          className={`text-white bg-red-700 p-2 w-40 ml-44 mt-4 rounded-lg`}
+        >
+          {props.btnText}
+        </button>
+      ) : (
+        <button
+          onClick={props.onClick}
+          className={`text-white bg-blue-700 p-2 w-40 ml-44 mt-4 rounded-lg`}
+        >
+          {props.btnText}
+        </button>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

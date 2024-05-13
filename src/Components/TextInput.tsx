@@ -12,7 +12,7 @@ const TextInput = (props: TextInputInterface) => {
   };
   return (
     <>
-      <div className="flex-row ml-40 mt-4">
+      <div className="flex-row ml-20 mt-4">
         <div className="flex-col">
           <label htmlFor={props.name}>{`${props.placeholder.substring(
             11
