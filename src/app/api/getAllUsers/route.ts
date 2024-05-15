@@ -5,10 +5,12 @@ import validateAndDecodeToken from "@/utils/validateToken";
 export async function GET(req: NextRequest) {
     try {
         const token = req.headers.get('authorization')
+
         const { message, flag } = validateAndDecodeToken(token);
         if (flag) {
             const users = await User.findAll({
-                attributes:[
+                attributes: [
+                    'userId',
                     'nameOfUser',
                     'emailOfUser',
                     'phoneNumber'
