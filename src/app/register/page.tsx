@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/Components/Button";
 import TextInput from "@/Components/TextInput";
-import { RegisterInterface } from "@/interface/AuthInterface";
+import { UserDetailInterface } from "@/interface/AuthInterface";
 import { TextInputInterface } from "@/interface/TextInputInterface";
 import axios from "axios";
 import Link from "next/link";
@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 const Register = () => {
   const router = useRouter();
-  const [user, setUser] = useState<RegisterInterface>({
+  const [user, setUser] = useState<UserDetailInterface>({
     nameOfUser: "",
     emailOfUser: "",
     phoneNumber: "",
@@ -155,7 +155,6 @@ const Register = () => {
         !nameError.errorState ||
         !phoneError.errorState
       ) {
-       
         const response = await axios.post(REGISTER_API_URL, {
           nameOfUser: user.nameOfUser,
           emailOfUser: user.emailOfUser,
@@ -163,8 +162,8 @@ const Register = () => {
           password: user.password,
         });
         const data = response.data;
-        if(data.message){
-          router.push("/")
+        if (data.message) {
+          router.push("/");
         }
       }
     } catch (error) {
@@ -174,7 +173,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="ml-96 mr-96 mt-20 pt-4 rounded-lg bg-blue-400 ">
+      <div className="rounded-lg bg-blue-400 p-4 " style={{margin:"13rem 40rem"}}>
         <h1 className="text-center text-2xl">Register Here</h1>
         {propsArray.map((val: TextInputInterface, index: any) => (
           <TextInput
@@ -189,11 +188,11 @@ const Register = () => {
           />
         ))}
 
-        <Button 
-        onClick={registerUserAPI} 
-        btnText={"Register"}
-        backgroundColor={"blue"}
-        textColor={"white"}
+        <Button
+          onClick={registerUserAPI}
+          btnText={"Register"}
+          backgroundColor={"blue"}
+          textColor={"white"}
         />
 
         <p className="ml-36 mt-4 pb-3">

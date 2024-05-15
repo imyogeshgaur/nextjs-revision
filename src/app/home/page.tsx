@@ -35,6 +35,7 @@ const Home = () => {
               name={val.nameOfUser}
               email={val.emailOfUser}
               phone={val.phoneNumber}
+              userId={val.userId}
             />
           );
         })}

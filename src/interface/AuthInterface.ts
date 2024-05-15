@@ -3,9 +3,9 @@ export interface LoginInterface{
     password:string;
 }
 
-export interface RegisterInterface{
-    nameOfUser:string;
-    emailOfUser:string;
-    phoneNumber:string;
-    password:string;
+export interface UserDetailInterface{
+    nameOfUser?:string;
+    emailOfUser?:string;
+    phoneNumber?:string;
+    password?:string;
 }
